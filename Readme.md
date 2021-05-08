@@ -18,7 +18,7 @@
 ```
 $ make setup-tensorflow-lite
 ```
-> See [the documentation](https://docs.openvisionapi.com) for the list of supported deep learning frameworks.
+> See [the documentation](https://openvisionapi-documentation.readthedocs.io/en/latest/) for the list of supported deep learning frameworks.
 
 2. Download the models:
 
@@ -42,7 +42,7 @@ $ git clone https://github.com/openvisionapi/ova-client
 $ cd ova-client
 $ make setup
 $ source .venv/bin/activate
-$ DETECTION_URL=http://localhost:8000/api/v1/detection ./ova_client.py detection demo/cat.jpeg
+$ DETECTION_URL=http://localhost:8000/api/v1/detection ./ova_client.py detection images/cat.jpeg
 ```
 
 > More information about the ova-client https://github.com/openvisionapi/ova-client
@@ -81,7 +81,7 @@ $ make test
 ## 📄 Documentation
 Full documentation can be found here:
 
-https://docs.openvisionapi.com
+https://openvisionapi-documentation.readthedocs.io/en/latest/
 
 ## ⚖️  License
 AGPLv3
