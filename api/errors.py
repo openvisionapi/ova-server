@@ -32,6 +32,12 @@ def http_422(exception):
     return response(message, 422)
 
 
+@errors.app_errorhandler(429)
+def http_429(exception):
+    message = {"description": "Too many requests"}
+    return response(message, 429)
+
+
 @errors.app_errorhandler(500)
 def http_500(exception):
     message = {"description": "Internal server error"}
