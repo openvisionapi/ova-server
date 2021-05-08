@@ -1,0 +1,11 @@
+name: CI
+on: [push]
+jobs:
+  tests:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+      - run: make dev
+      - run: make test
