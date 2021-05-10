@@ -85,3 +85,5 @@ https://openvisionapi-documentation.readthedocs.io/en/latest/
 
 ## ⚖️  License
 AGPLv3
+
+Copyright © 2021 Badr BADRI @pythops
