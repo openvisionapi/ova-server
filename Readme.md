@@ -10,8 +10,14 @@
 
 </div>
 
-
 ## 🚀 Quick start
+
+An instance of **ova-server** is free and publicly available here:
+
+https://api.openvisionapi.com
+
+Checkout [ova-client](https://github.com/openvisionapi/ova-client) for a quick demo.
+
 
 ### Installing
 1. Setup a local enviroment using tensorflow lite as backend framework
