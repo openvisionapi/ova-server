@@ -10,7 +10,7 @@ absl-py==0.12.0
     #   tensorflow
 astunparse==1.6.3
     # via tensorflow
-cachetools==4.2.1
+cachetools==4.2.2
     # via google-auth
 certifi==2020.12.5
     # via requests
@@ -18,24 +18,26 @@ chardet==4.0.0
     # via requests
 flatbuffers==1.12
     # via tensorflow
-gast==0.3.3
+gast==0.4.0
     # via tensorflow
-google-auth-oauthlib==0.4.3
+google-auth-oauthlib==0.4.4
     # via tensorboard
-google-auth==1.28.0
+google-auth==1.30.0
     # via
     #   google-auth-oauthlib
     #   tensorboard
 google-pasta==0.2.0
     # via tensorflow
-grpcio==1.32.0
+grpcio==1.34.1
     # via
     #   tensorboard
     #   tensorflow
-h5py==2.10.0
+h5py==3.1.0
     # via tensorflow
 idna==2.10
     # via requests
+keras-nightly==2.5.0.dev2021032900
+    # via tensorflow
 keras-preprocessing==1.1.2
     # via tensorflow
 markdown==3.3.4
@@ -52,7 +54,7 @@ oauthlib==3.1.0
     # via requests-oauthlib
 opt-einsum==3.3.0
     # via tensorflow
-protobuf==3.15.6
+protobuf==3.17.0
     # via
     #   tensorboard
     #   tensorflow
@@ -77,18 +79,18 @@ six==1.15.0
     #   google-auth
     #   google-pasta
     #   grpcio
-    #   h5py
     #   keras-preprocessing
     #   protobuf
-    #   tensorboard
     #   tensorflow
+tensorboard-data-server==0.6.1
+    # via tensorboard
 tensorboard-plugin-wit==1.8.0
     # via tensorboard
-tensorboard==2.4.1
+tensorboard==2.5.0
     # via tensorflow
-tensorflow-estimator==2.4.0
+tensorflow-estimator==2.5.0
     # via tensorflow
-tensorflow==2.4.1
+tensorflow==2.5.0
     # via -r requirements/tensorflow.in
 termcolor==1.1.0
     # via tensorflow
@@ -96,7 +98,7 @@ typing-extensions==3.7.4.3
     # via tensorflow
 urllib3==1.26.4
     # via requests
-werkzeug==1.0.1
+werkzeug==2.0.1
     # via tensorboard
 wheel==0.36.2
     # via
