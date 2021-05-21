@@ -51,9 +51,9 @@ run:
 pip-update:
 	@(\
 	    source .venv/bin/activate && \
-	    pip-compile --output-file=requirements/common.txt requirements/common.in && \
-	    pip-compile --output-file=requirements/dev.txt requirements/dev.in && \
-	    pip-compile --output-file=requirements/test.txt requirements/test.in && \
-	    pip-compile --output-file=requirements/tensorflow_lite.txt requirements/tensorflow_lite.in && \
-	    pip-compile --output-file=requirements/tensorflow.txt requirements/tensorflow.in \
+	    pip-compile --output-file=requirements/common.txt -U requirements/common.in && \
+	    pip-compile --output-file=requirements/dev.txt -U requirements/dev.in && \
+	    pip-compile --output-file=requirements/test.txt -U requirements/test.in && \
+	    pip-compile --output-file=requirements/tensorflow_lite.txt -U requirements/tensorflow_lite.in && \
+	    pip-compile --output-file=requirements/tensorflow.txt -U requirements/tensorflow.in \
 	)
