@@ -4,7 +4,7 @@
 #
 #    pip-compile --output-file=requirements/common.txt requirements/common.in
 #
-certifi==2020.12.5
+certifi==2021.5.30
     # via requests
 chardet==4.0.0
     # via requests
@@ -38,7 +38,7 @@ six==1.16.0
     # via
     #   flask-limiter
     #   limits
-urllib3==1.26.4
+urllib3==1.26.5
     # via requests
 webargs==8.0.0
     # via -r requirements/common.in

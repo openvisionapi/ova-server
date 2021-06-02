@@ -12,7 +12,7 @@ astunparse==1.6.3
     # via tensorflow
 cachetools==4.2.2
     # via google-auth
-certifi==2020.12.5
+certifi==2021.5.30
     # via requests
 chardet==4.0.0
     # via requests
@@ -22,7 +22,7 @@ gast==0.4.0
     # via tensorflow
 google-auth-oauthlib==0.4.4
     # via tensorboard
-google-auth==1.30.0
+google-auth==1.30.1
     # via
     #   google-auth-oauthlib
     #   tensorboard
@@ -50,11 +50,11 @@ numpy==1.19.5
     #   opt-einsum
     #   tensorboard
     #   tensorflow
-oauthlib==3.1.0
+oauthlib==3.1.1
     # via requests-oauthlib
 opt-einsum==3.3.0
     # via tensorflow
-protobuf==3.17.0
+protobuf==3.17.1
     # via
     #   tensorboard
     #   tensorflow
@@ -96,7 +96,7 @@ termcolor==1.1.0
     # via tensorflow
 typing-extensions==3.7.4.3
     # via tensorflow
-urllib3==1.26.4
+urllib3==1.26.5
     # via requests
 werkzeug==2.0.1
     # via tensorboard

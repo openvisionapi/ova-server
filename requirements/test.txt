@@ -12,11 +12,11 @@ attrs==21.2.0
     #   pytest
 bandit==1.7.0
     # via -r requirements/test.in
-black==21.5b1
+black==21.5b2
     # via flake8-black
 click==8.0.1
     # via black
-coverage[toml]==5.5
+coverage==5.5
     # via pytest-cov
 flake8-black==0.2.1
     # via -r requirements/test.in
@@ -68,7 +68,7 @@ pyflakes==2.3.1
     # via flake8
 pyparsing==2.4.7
     # via packaging
-pytest-cov==2.12.0
+pytest-cov==2.12.1
     # via pytest-cover
 pytest-cover==3.0.0
     # via pytest-coverage
@@ -97,6 +97,7 @@ toml==0.10.2
     # via
     #   black
     #   pytest
+    #   pytest-cov
 typed-ast==1.4.3
     # via mypy
 typing-extensions==3.10.0.0
