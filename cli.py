@@ -7,6 +7,8 @@ import requests
 
 from api.config.api.config import config
 
+model_base_url = "https://openvisionapi.fra1.cdn.digitaloceanspaces.com"
+
 
 @click.group()
 def cli():
@@ -34,15 +36,15 @@ def download(model, framework, hardware):
     )
     if framework == "tensorflow":
         file_name = f"{model}.h5"
-        model_url = f"https://models.openvisionapi.com/{model}/{model}.h5"
+        model_url = f"{model_base_url}/{model}/{model}.h5"
 
     elif framework == "tensorflow_lite":
         if hardware == "edgetpu":
             file_name = f"{model}-edgtpu.tflite"
-            model_url = f"https://models.openvisionapi.com/{model}/{model}-edgetpu.tflite"
+            model_url = f"{model_base_url}/{model}/{model}-edgetpu.tflite"
         else:
             file_name = f"{model}.tflite"
-            model_url = f"https://models.openvisionapi.com/{model}/{model}.tflite"
+            model_url = f"{model_base_url}/{model}/{model}.tflite"
 
     if Path(f"{config.MODELS_FOLDER}/{framework}/{hardware}/{model}/{file_name}").exists():
         click.echo(f"The model {model} exists already. Skipping download")
@@ -63,7 +65,7 @@ def download(model, framework, hardware):
     else:
         try:
             click.echo("Download labels file")
-            url = f"https://models.openvisionapi.com/{model}/labels.txt"
+            url = f"{model_base_url}/{model}/labels.txt"
             response = requests.get(url=url)
             response.raise_for_status()
             with open(
