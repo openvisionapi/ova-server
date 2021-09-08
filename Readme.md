@@ -29,6 +29,7 @@ $ make setup-tensorflow-lite
 2. Download the models:
 
 ```bash
+$ source .venv/bin/activate
 $ ./cli.py download --model=yolov4 --framework=tensorflow_lite --hardware=cpu
 ```
 
