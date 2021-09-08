@@ -1,3 +1,4 @@
 pdbpp
 pip-tools
 watchdog
+typing-extensions==3.7.4.3

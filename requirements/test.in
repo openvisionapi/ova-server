@@ -1,9 +1,11 @@
 bandit
+black==21.5b2
 flake8
 flake8-black
 flake8-isort
 flake8-bugbear
 mypy
+typing-extensions==3.7.4
 pycodestyle
 pytest
 pytest-coverage
