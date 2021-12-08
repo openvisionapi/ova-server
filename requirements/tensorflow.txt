@@ -4,25 +4,23 @@
 #
 #    pip-compile --output-file=requirements/tensorflow.txt requirements/tensorflow.in
 #
-absl-py==0.13.0
+absl-py==1.0.0
     # via
     #   tensorboard
     #   tensorflow
 astunparse==1.6.3
     # via tensorflow
-cachetools==4.2.2
+cachetools==4.2.4
     # via google-auth
-certifi==2021.5.30
+certifi==2021.10.8
     # via requests
-charset-normalizer==2.0.4
+charset-normalizer==2.0.9
     # via requests
-clang==5.0
-    # via tensorflow
-flatbuffers==1.12
+flatbuffers==2.0
     # via tensorflow
 gast==0.4.0
     # via tensorflow
-google-auth==1.35.0
+google-auth==2.3.3
     # via
     #   google-auth-oauthlib
     #   tensorboard
@@ -30,21 +28,25 @@ google-auth-oauthlib==0.4.6
     # via tensorboard
 google-pasta==0.2.0
     # via tensorflow
-grpcio==1.40.0
+grpcio==1.42.0
     # via
     #   tensorboard
     #   tensorflow
-h5py==3.1.0
+h5py==3.6.0
     # via tensorflow
-idna==3.2
+idna==3.3
     # via requests
-keras==2.6.0
+importlib-metadata==4.8.2
+    # via markdown
+keras==2.7.0
     # via tensorflow
 keras-preprocessing==1.1.2
     # via tensorflow
-markdown==3.3.4
+libclang==12.0.0
+    # via tensorflow
+markdown==3.3.6
     # via tensorboard
-numpy==1.19.5
+numpy==1.21.4
     # via
     #   -r requirements/tensorflow.in
     #   h5py
@@ -56,7 +58,7 @@ oauthlib==3.1.1
     # via requests-oauthlib
 opt-einsum==3.3.0
     # via tensorflow
-protobuf==3.17.3
+protobuf==3.19.1
     # via
     #   tensorboard
     #   tensorflow
@@ -72,9 +74,9 @@ requests==2.26.0
     #   tensorboard
 requests-oauthlib==1.3.0
     # via google-auth-oauthlib
-rsa==4.7.2
+rsa==4.8
     # via google-auth
-six==1.15.0
+six==1.16.0
     # via
     #   absl-py
     #   astunparse
@@ -82,33 +84,36 @@ six==1.15.0
     #   google-pasta
     #   grpcio
     #   keras-preprocessing
-    #   protobuf
     #   tensorflow
-tensorboard==2.6.0
+tensorboard==2.7.0
     # via tensorflow
 tensorboard-data-server==0.6.1
     # via tensorboard
 tensorboard-plugin-wit==1.8.0
     # via tensorboard
-tensorflow==2.6.0
+tensorflow==2.7.0
     # via -r requirements/tensorflow.in
-tensorflow-estimator==2.6.0
+tensorflow-estimator==2.7.0
+    # via tensorflow
+tensorflow-io-gcs-filesystem==0.22.0
     # via tensorflow
 termcolor==1.1.0
     # via tensorflow
-typing-extensions==3.7.4.3
+typing-extensions==4.0.1
     # via tensorflow
-urllib3==1.26.6
+urllib3==1.26.7
     # via requests
-werkzeug==2.0.1
+werkzeug==2.0.2
     # via tensorboard
 wheel==0.37.0
     # via
     #   astunparse
     #   tensorboard
     #   tensorflow
-wrapt==1.12.1
+wrapt==1.13.3
     # via tensorflow
+zipp==3.6.0
+    # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools

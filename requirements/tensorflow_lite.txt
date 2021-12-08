@@ -6,9 +6,7 @@
 #
 --extra-index-url https://google-coral.github.io/py-repo/
 
-numpy==1.19.5
-    # via
-    #   -r requirements/tensorflow_lite.in
-    #   tflite-runtime
-tflite-runtime==2.5.0.post1
+numpy==1.21.4
+    # via tflite-runtime
+tflite-runtime==2.7.0
     # via -r requirements/tensorflow_lite.in
