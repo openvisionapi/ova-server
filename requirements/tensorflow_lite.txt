@@ -4,9 +4,7 @@
 #
 #    pip-compile --output-file=requirements/tensorflow_lite.txt requirements/tensorflow_lite.in
 #
---extra-index-url https://google-coral.github.io/py-repo/
-
-numpy==1.21.4
+numpy==1.22.2
     # via tflite-runtime
 tflite-runtime==2.7.0
     # via -r requirements/tensorflow_lite.in
