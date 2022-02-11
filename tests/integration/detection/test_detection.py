@@ -10,7 +10,7 @@ def test_detection_should_return_correct_predictions(test_client):
     expected_json = {
         'description': 'Detected objects',
         'predictions': [
-            {'bbox': {'x1': 451, 'x2': 987, 'y1': 89, 'y2': 1378}, 'label': 'cat', 'score': '0.43'}
+            {'bbox': {'x1': 451, 'x2': 987, 'y1': 91, 'y2': 1377}, 'label': 'cat', 'score': '0.42'}
         ],
     }
 
