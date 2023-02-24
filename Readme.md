@@ -21,12 +21,14 @@ Open Vision API is an open source computer vision API that uses deep learning mo
 
 The following instructions detail how to set up the ova-server. For information regarding the ova-client and a quick demo of the API functionality, visit [ova-client](https://github.com/openvisionapi/ova-client).
 
+You need to have [just](https://github.com/casey/just) installed in your system.
+
 ### Installation
 
-1. Set up a local environment using TensorFlow Lite as the backend framework.
+1. Set up a local environment using TensorFlow as the backend framework.
 
 ```
-$ make setup-tensorflow-lite
+$ just setup-tensorflow
 ```
 
 > See [documentation](https://openvisionapi-documentation.readthedocs.io/en/latest/) for a list of supported deep learning frameworks.
@@ -43,12 +45,12 @@ $ ./cli.py download --model=yolov4 --framework=tensorflow_lite --hardware=cpu
 1. Run the ova-server.
 
 ```bash
-$ make run
+$ just run-with-tensorflow-lite
 
-[2021-03-26 19:45:37 +0100] [396769] [INFO] Starting gunicorn 20.0.4
-[2021-03-26 19:45:37 +0100] [396769] [INFO] Listening at: http://0.0.0.0:8000 (396769)
-[2021-03-26 19:45:37 +0100] [396769] [INFO] Using worker: sync
-[2021-03-26 19:45:37 +0100] [396771] [INFO] Booting worker with pid: 396771
+[2023-02-24 00:01:07 +0100] [1869009] [INFO] Starting gunicorn 20.1.0
+[2023-02-24 00:01:07 +0100] [1869009] [INFO] Listening at: http://0.0.0.0:8000 (1869009)
+[2023-02-24 00:01:07 +0100] [1869009] [INFO] Using worker: sync
+[2023-02-24 00:01:07 +0100] [1869031] [INFO] Booting worker with pid: 1869031
 ```
 
 2. Get the official client.
@@ -56,7 +58,7 @@ $ make run
 ```bash
 $ git clone https://github.com/openvisionapi/ova-client
 $ cd ova-client
-$ make setup
+$ just psetup
 $ source .venv/bin/activate
 $ DETECTION_URL=http://localhost:8000/api/v1/detection ./ova_client.py detection images/cat.jpeg
 ```
@@ -85,7 +87,7 @@ All contributions are welcome!
 To set up the development environment, simply run the command:
 
 ```
-$ make dev
+$ just dev
 ```
 
 ### Code Style Checks
@@ -100,8 +102,8 @@ Black and mypy are used to ensure that contributions are stylized in a uniform m
 To run the tests, simply use the commands:
 
 ```
-$ make dev
-$ make test
+$ just dev
+$ just test
 ```
 
 ## 📄 Documentation
