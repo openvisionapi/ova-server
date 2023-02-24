@@ -8,5 +8,5 @@ jobs:
         with:
           fetch-depth: 1
       - uses: taiki-e/install-action@just
-      - run: make dev
-      - run: make test
+      - run: just dev
+      - run: just test
