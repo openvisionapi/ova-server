@@ -12,7 +12,7 @@ class Config:
     # max size of 4MB
     MAX_IMAGE_SIZE = int(os.getenv("MAX_IMAGE_SIZE", 4 * 1024 * 1024))
 
-    DETECTION_RATE_LIMIT = os.getenv("DETECTION_RATE_LIMIT")
+    DETECTION_RATE_LIMIT: str = os.getenv("DETECTION_RATE_LIMIT", "1")
 
 
 config = Config()
