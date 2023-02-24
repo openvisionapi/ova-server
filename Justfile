@@ -41,6 +41,7 @@ pip-update:
 
 dev:
     #!/usr/bin/env bash
+    git clone https://github.com/openvisionapi/test-models.git testdata/test-models &&
     python3 -m venv .venv &&
     source .venv/bin/activate &&
     pip3 install -U pip &&
