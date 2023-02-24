@@ -1,7 +1,7 @@
 from importlib import import_module
 from pathlib import Path
 
-import tflite_runtime.interpreter as tflite
+import tensorflow.lite as tflite
 from PIL import Image
 
 from api.config.api.config import config
