@@ -7,7 +7,7 @@ import requests
 
 from api.config.api.config import config
 
-model_base_url = "https://openvisionapi.fra1.cdn.digitaloceanspaces.com"
+model_base_url = "https://huggingface.co/openvisionapi/{model}/resolve/main/{file_name}"
 
 
 @click.group()
@@ -30,21 +30,19 @@ def cli():
     type=click.Choice(["cpu", "gpu", "edgetpu"]),
 )
 def download(model, framework, hardware):
-
     Path(f"{config.MODELS_FOLDER}/{framework}/{hardware}/{model}").mkdir(
         parents=True, exist_ok=True
     )
     if framework == "tensorflow":
         file_name = f"{model}.h5"
-        model_url = f"{model_base_url}/{model}/{model}.h5"
 
     elif framework == "tensorflow_lite":
         if hardware == "edgetpu":
             file_name = f"{model}-edgtpu.tflite"
-            model_url = f"{model_base_url}/{model}/{model}-edgetpu.tflite"
         else:
             file_name = f"{model}.tflite"
-            model_url = f"{model_base_url}/{model}/{model}.tflite"
+
+    model_url = model_base_url.format(model=model, file_name=file_name)
 
     if Path(f"{config.MODELS_FOLDER}/{framework}/{hardware}/{model}/{file_name}").exists():
         click.echo(f"The model {model} exists already. Skipping download")
@@ -65,7 +63,7 @@ def download(model, framework, hardware):
     else:
         try:
             click.echo("Download labels file")
-            url = f"{model_base_url}/{model}/labels.txt"
+            url = model_base_url.format(model=model, file_name="labels.txt")
             response = requests.get(url=url)
             response.raise_for_status()
             with open(
