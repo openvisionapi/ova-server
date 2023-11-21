@@ -49,6 +49,7 @@ uvicorn = "^0.23.2"
 httpx = "^0.25.0"
 pillow = "^10.1.0"
 python-multipart = "^0.0.6"
+slowapi = "^0.1.8"
 
 [tool.poetry.group.tensorflow.dependencies]
 tensorflow = "^2.11.0"
@@ -60,7 +61,7 @@ tflite-runtime = "^2.14.0"
 [tool.poetry.group.pytorch.dependencies]
 
 [tool.poetry.group.dev.dependencies]
-pdbpp = "^0.10.3"
+pdbpp = "*"
 
 [tool.poetry.group.test.dependencies]
 ruff = "*"
