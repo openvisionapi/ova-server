@@ -1,12 +1,29 @@
 name: CI
-on: [push]
+on:
+  - push
+  - pull_request
 jobs:
   tests:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 1
-      - uses: taiki-e/install-action@just
-      - run: just dev
-      - run: just test
+
+      - name: Setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install poetry
+        uses: snok/install-poetry@v1
+
+      - name: Install just
+        uses: taiki-e/install-action@just
+
+      - name: Install the dependencies
+        run: just dev
+
+      - name: Run tests
+        run: just test
