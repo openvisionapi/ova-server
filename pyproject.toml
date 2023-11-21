@@ -1,14 +1,106 @@
-[tool.black]
+#
+# Ruff
+#
+
+[tool.ruff]
+exclude = [
+  ".eggs",
+  ".git",
+  ".mypy_cache",
+  ".pytest_cache",
+  ".ruff_cache",
+  "__pycache__",
+  ".tox",
+  ".venv",
+  "__pypackages__",
+  "build",
+  "dist",
+  "node_modules",
+  ".venv",
+]
+
+extend-select = ["I"]
 line-length = 100
-skip_string_normalization = true
-exclude = '''
-/(
-    \.git
-  | \.mypy_cache
-  | \.pytest_cache
-  | \.venv
-  | __pycache__
-  | build
-  | dist
-)/
-'''
+indent-width = 4
+fix = true
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+#
+# Poetry
+#
+
+[tool.poetry]
+name = "ova-server"
+version = "0.1.0"
+description = "Open Vision API Server"
+authors = ["pythops <contact@pythops.com>"]
+license = "AGPLv3"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.11"
+fastapi = "^0.103.2"
+uvicorn = "^0.23.2"
+httpx = "^0.25.0"
+pillow = "^10.1.0"
+python-multipart = "^0.0.6"
+
+[tool.poetry.group.tensorflow.dependencies]
+tensorflow = "^2.11.0"
+keras = "2.11"
+
+[tool.poetry.group.tensorflow_lite.dependencies]
+tflite-runtime = "^2.14.0"
+
+[tool.poetry.group.pytorch.dependencies]
+
+[tool.poetry.group.dev.dependencies]
+pdbpp = "^0.10.3"
+
+[tool.poetry.group.test.dependencies]
+ruff = "*"
+pytest = "*"
+pytest-asyncio = "*"
+pytest-icdiff = "*"
+pytest-coverage = "*"
+mypy = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+#
+# Pytest
+#
+
+[tool.pytest.ini_options]
+testpaths = "tests"
+python_files = "test_*.py"
+python_functions = "test_*"
+python_classes = "Test* *Tests"
+addopts = "-vv -x"
+asyncio_mode = "auto"
+
+#
+# Mypy
+#
+
+[tool.mypy]
+check_untyped_defs = true
+namespace_packages = true
+pretty = true
+show_error_context = true
+allow_redefinition = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+ignore_errors = true
+
+[[tool.mypy.overrides]]
+module = ["tensorflow.*", "tflite_runtime.*", "PIL.*"]
+ignore_missing_imports = true

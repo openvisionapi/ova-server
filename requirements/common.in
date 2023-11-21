@@ -1,6 +1,0 @@
-Flask
-Flask-Limiter
-gunicorn
-Pillow
-requests
-webargs
