@@ -21,13 +21,16 @@ Open Vision API is an open source computer vision API that uses deep learning mo
 
 The following instructions detail how to set up the ova-server. For information regarding the ova-client and a quick demo of the API functionality, visit [ova-client](https://github.com/openvisionapi/ova-client).
 
-You need to have [just](https://github.com/casey/just) installed in your system.
+You need to have:
+
+- [just](https://github.com/casey/just) installed in your system.
+- [poetry](https://python-poetry.org/)
 
 ### Installation
 
 1. Set up a local environment using TensorFlow as the backend framework.
 
-```
+```bash
 $ just setup-tensorflow
 ```
 
@@ -46,11 +49,11 @@ $ ./cli.py download --model=yolov4 --framework=tensorflow_lite --hardware=cpu
 
 ```bash
 $ just run-with-tensorflow-lite
-
-[2023-02-24 00:01:07 +0100] [1869009] [INFO] Starting gunicorn 20.1.0
-[2023-02-24 00:01:07 +0100] [1869009] [INFO] Listening at: http://0.0.0.0:8000 (1869009)
-[2023-02-24 00:01:07 +0100] [1869009] [INFO] Using worker: sync
-[2023-02-24 00:01:07 +0100] [1869031] [INFO] Booting worker with pid: 1869031
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+INFO:     Started server process [3588600]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 ```
 
 2. Get the official client.
@@ -58,7 +61,7 @@ $ just run-with-tensorflow-lite
 ```bash
 $ git clone https://github.com/openvisionapi/ova-client
 $ cd ova-client
-$ just psetup
+$ just setup
 $ source .venv/bin/activate
 $ DETECTION_URL=http://localhost:8000/api/v1/detection ./ova_client.py detection images/cat.jpeg
 ```
@@ -67,8 +70,7 @@ $ DETECTION_URL=http://localhost:8000/api/v1/detection ./ova_client.py detection
 
 ## ⛏️ Built Using
 
-- [Flask](https://github.com/pallets/flask)
-- [Marshmallow](https://github.com/marshmallow-code/marshmallow)
+- [FastAPI](https://github.com/tiangolo/fastapi)
 - [Pillow](https://github.com/python-pillow/Pillow)
 - [Numpy](https://github.com/numpy/numpy)
 - [TensorFlow](https://github.com/tensorflow/tensorflow)
@@ -92,9 +94,9 @@ $ just dev
 
 ### Code Style Checks
 
-Black and mypy are used to ensure that contributions are stylized in a uniform manner.
+ruff and mypy are used to ensure that contributions are stylized in a uniform manner.
 
-- [Black](https://github.com/psf/black) is used for code formatting
+- [Ruff](https://github.com/astral-sh/ruff) is used as a linter and a code formatter.
 - [mypy](https://github.com/python/mypy) is used for static typing
 
 ## 🔧 Tests
@@ -115,4 +117,4 @@ https://openvisionapi-documentation.readthedocs.io/en/latest/
 
 AGPLv3
 
-Copyright © 2021-2023 Badr BADRI @pythops
+Copyright © 2021-Present Badr BADRI @pythops
