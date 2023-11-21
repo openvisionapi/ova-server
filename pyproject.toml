@@ -40,7 +40,7 @@ version = "0.1.0"
 description = "Open Vision API Server"
 authors = ["pythops <contact@pythops.com>"]
 license = "AGPLv3"
-readme = "README.md"
+readme = "Readme.md"
 
 [tool.poetry.dependencies]
 python = ">=3.9,<3.11"
@@ -70,6 +70,7 @@ pytest-asyncio = "*"
 pytest-icdiff = "*"
 pytest-coverage = "*"
 mypy = "*"
+bandit = "*"
 
 [build-system]
 requires = ["poetry-core"]
