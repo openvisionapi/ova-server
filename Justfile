@@ -31,7 +31,7 @@ update:
 
 dev:
     #!/usr/bin/env bash
-    if [ ! -d "testdata" ]; then
+    if [ ! -d "testdata/test-models" ]; then
         git clone https://github.com/openvisionapi/test-models.git testdata/test-models
     fi
     poetry install
