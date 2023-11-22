@@ -9,7 +9,7 @@
 
 ## 🌟 Project Description
 
-Open Vision API is an open source computer vision API that uses oepn source deep learning models for object detection.
+Open Vision API is an open source computer vision API based on open source models.
 
 <div align="center">
 <img src="https://openvisionapi.com/images/demo.jpeg"  width="60%" height="30%">
@@ -39,7 +39,7 @@ Set up a local environment using TensorFlow Lite as the backend framework.
 $ just setup-tensorflow-lite
 ```
 
-> See [documentation](https://openvisionapi-documentation.readthedocs.io/en/latest/) for a list of supported deep learning frameworks.
+> See [documentation](https://github.com/openvisionapi/docs) for a list of supported deep learning frameworks.
 
 Download the models.
 
@@ -129,7 +129,7 @@ $ just test
 
 ## 📄 Documentation
 
-The complete documentation can be found here [documentation](https://openvisionapi-documentation.readthedocs.io/en/latest/)
+The complete documentation can be found here [documentation](https://github.com/openvisionapi/docs)
 
 <br>
 
