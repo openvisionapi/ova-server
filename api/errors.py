@@ -1,44 +1,23 @@
-from flask import Blueprint
+from fastapi.responses import JSONResponse
+from slowapi.errors import RateLimitExceeded
 
-from api.utils import response
-
-errors = Blueprint("errors", __name__)
-
-
-@errors.app_errorhandler(401)
-def http_401(exception):
-    message = {"description": "Unauthorized"}
-    return response(message, 401)
+from api import exceptions
 
 
-@errors.app_errorhandler(404)
-def http_404(exception):
-    message = {"description": "Requested page not found"}
-    return response(message, 404)
+def handle_errors(app):
+    @app.exception_handler(exceptions.ImageTooLarge)
+    async def image_too_large(request, exception):
+        return JSONResponse(status_code=413, content={"error": str(exception)})
 
+    @app.exception_handler(exceptions.UnsupportedImageType)
+    async def unsupported_image_type(request, exception):
+        return JSONResponse(status_code=415, content={"error": str(exception)})
 
-@errors.app_errorhandler(405)
-def http_405(exception):
-    message = {"description": "Method Not allowed"}
-    return response(message, 405)
-
-
-@errors.app_errorhandler(422)
-def http_422(exception):
-    message = {
-        "description": "Unprocessable entity",
-        "content": {"message": exception.exc.messages},
-    }
-    return response(message, 422)
-
-
-@errors.app_errorhandler(429)
-def http_429(exception):
-    message = {"description": "Too many requests"}
-    return response(message, 429)
-
-
-@errors.app_errorhandler(500)
-def http_500(exception):
-    message = {"description": "Internal server error"}
-    return response(message, 500)
+    @app.exception_handler(RateLimitExceeded)
+    async def rate_limit(request, exception):
+        return JSONResponse(
+            status_code=429,
+            content={
+                "error": f"Too many requests: the limit is {str(exception.detail)}"
+            },
+        )

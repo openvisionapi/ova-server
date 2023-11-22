@@ -1,5 +1,9 @@
 from abc import ABC, abstractmethod
 
+from PIL.Image import Image
+
+from api.detection.consts import DetectionModels
+
 
 class InferenceABC(ABC):
     @abstractmethod
@@ -15,5 +19,5 @@ class InferenceABC(ABC):
         pass
 
     @abstractmethod
-    def detection(self, model_name, image):
+    async def detection(self, model_name: DetectionModels, image: Image):
         pass

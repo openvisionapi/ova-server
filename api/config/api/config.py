@@ -7,12 +7,10 @@ class Config:
 
     MODELS_FOLDER = os.getenv("MODELS_FOLDER", "models")
 
-    DETECTION_MODELS = ["yolov4"]
-
     # max size of 4MB
     MAX_IMAGE_SIZE = int(os.getenv("MAX_IMAGE_SIZE", 4 * 1024 * 1024))
 
-    DETECTION_RATE_LIMIT: str = os.getenv("DETECTION_RATE_LIMIT", "1")
+    DETECTION_RATE_LIMIT: str = os.getenv("DETECTION_RATE_LIMIT", "100/minute")
 
 
 config = Config()

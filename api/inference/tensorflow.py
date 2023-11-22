@@ -2,23 +2,24 @@ from importlib import import_module
 from pathlib import Path
 
 import tensorflow as tf
-from PIL import Image
+from PIL.Image import Image
 
 from api.config.api.config import config
+from api.detection import consts
 from api.inference.base import InferenceABC
 
 
 class TensorflowInference(InferenceABC):
     def __init__(self):
-        self.models = {"detection": [], "segmentation": []}
+        self.models: dict[str, list] = {"detection": [], "segmentation": []}
 
     def init(self) -> None:
-        for model_name in config.DETECTION_MODELS:
-            model_path = self.get_model_path(model_name=model_name)
+        for model_name in consts.DetectionModels:
+            model_path = self.get_model_path(model_name=model_name.value)
             tf_model = tf.keras.models.load_model(model_path)
 
-            model_module = import_module(f"api.model.detection.{model_name}")
-            model = model_module.model  # type: ignore
+            model_module = import_module(f"api.model.detection.{model_name.value}")
+            model = model_module.model
             model.init("tensorflow")
 
             self.models["detection"].append(
@@ -35,7 +36,7 @@ class TensorflowInference(InferenceABC):
         )
         return str(path)
 
-    def detection(self, model_name: str, image: Image) -> list:
+    async def detection(self, model_name: str, image: Image) -> list:
         model, tf_model = next(
             (i["model"], i["tf_model"])
             for i in self.models["detection"]

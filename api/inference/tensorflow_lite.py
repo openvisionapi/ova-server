@@ -1,32 +1,33 @@
 from importlib import import_module
 from pathlib import Path
 
-import tensorflow.lite as tflite
-from PIL import Image
+from PIL.Image import Image
+from tflite_runtime.interpreter import Interpreter, load_delegate
 
 from api.config.api.config import config
+from api.detection import consts
 from api.inference.base import InferenceABC
 
 
 class TensorflowLiteInference(InferenceABC):
     def __init__(self):
-        self.interpreters = {"detection": [], "segmentation": []}
+        self.interpreters: dict[str, list] = {"detection": [], "segmentation": []}
 
     def init(self) -> None:
-        for model_name in config.DETECTION_MODELS:
-            model_path = self.get_model_path(model_name=model_name)
+        for model_name in consts.DetectionModels:
+            model_path = self.get_model_path(model_name=model_name.value)
             if config.ML_HARDWARE == "edgetpu":
-                interpreter = tflite.Interpreter(
+                interpreter = Interpreter(
                     model_path=model_path,
-                    experimental_delegates=[tflite.load_delegate("libedgetpu.so.1")],
+                    experimental_delegates=[load_delegate("libedgetpu.so.1")],
                 )
             else:
-                interpreter = tflite.Interpreter(model_path=model_path)
+                interpreter = Interpreter(model_path=model_path)
 
             interpreter.allocate_tensors()
 
             model_module = import_module(f"api.model.detection.{model_name}")
-            model = model_module.model  # type: ignore
+            model = model_module.model
             model.init("tensorflow_lite")
 
             self.interpreters["detection"].append(
@@ -43,7 +44,7 @@ class TensorflowLiteInference(InferenceABC):
         )
         return str(path)
 
-    def detection(self, model_name: str, image: Image) -> list:
+    async def detection(self, model_name: str, image: Image) -> list:
         model, interpreter = next(
             (i["model"], i["interpreter"])
             for i in self.interpreters["detection"]

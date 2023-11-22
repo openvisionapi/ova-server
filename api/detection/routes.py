@@ -1,22 +1,22 @@
-from flask import Blueprint
-from PIL import Image
-from webargs.flaskparser import use_kwargs
-from werkzeug.wrappers import Response
+from fastapi import APIRouter, Depends, Form, Request
+from PIL.Image import Image
 
 from api import limiter
 from api.config.api.config import config
-from api.detection import schemas
-from api.inference import inference  # type: ignore
-from api.utils import response
+from api.detection import validators
+from api.detection.consts import DetectionModels
+from api.detection.schemas import DetectionResponse
+from api.inference import inference
 
-detection = Blueprint("detection", __name__, url_prefix="/api/v1")
+router = APIRouter(prefix="/api/v1")
 
 
-@detection.route("/detection", methods=["POST"])
-@use_kwargs(schemas.DetectionModel(), location="form")
-@use_kwargs(schemas.DetectionImage(), location="files")
+@router.post("/detection")
 @limiter.limit(config.DETECTION_RATE_LIMIT)
-def object_detection(model: str, image: Image) -> Response:
-    predictions = inference.detection(model, image)
-    message = {"description": "Detected objects", "predictions": predictions}
-    return response(message, 200)
+async def object_detection(
+    request: Request,
+    image: Image = Depends(validators.input_image),
+    model: DetectionModels = Form(),
+) -> DetectionResponse:
+    predictions = await inference.detection(model_name=model.value, image=image)
+    return DetectionResponse(description="Detected objects", predictions=predictions)

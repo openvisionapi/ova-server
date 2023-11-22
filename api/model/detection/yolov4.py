@@ -1,7 +1,7 @@
 from pathlib import Path
 
 import numpy as np
-from PIL import Image
+from PIL.Image import Image
 
 from api.config.api.config import config as api_config
 from api.config.detection.yolov4 import config as yolov4_config
@@ -12,7 +12,7 @@ class Yolov4:
     def __init__(self):
         self.iou_threshold = yolov4_config.IOU_THRESHOLD
         self.input_size = yolov4_config.INPUT_SIZE
-        self.labels = None
+        self.labels = {}
 
     def init(self, ml_framework: str) -> None:
         labels_file_path = Path(
@@ -65,7 +65,11 @@ class Yolov4:
         predictions = []
         for i in range(len(pred_labels)):
             predictions.append(
-                {"label": pred_labels[i], "score": pred_scores[i], "bbox": pred_bboxes[i]}
+                {
+                    "label": pred_labels[i],
+                    "score": pred_scores[i],
+                    "bbox": pred_bboxes[i],
+                }
             )
         return predictions
 

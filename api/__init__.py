@@ -1,26 +1,27 @@
-from flask import Flask
-from flask_limiter import Limiter
-from flask_limiter.util import get_remote_address
+from fastapi import FastAPI
+from slowapi import Limiter
+from slowapi.util import get_remote_address
 
-from api.config.api.config import config
-from api.inference import inference  # type: ignore
+from api.inference import inference
 
 limiter = Limiter(key_func=get_remote_address)
 
 
-def init_api() -> Flask:
-    server = Flask(__name__)
-    server.config.from_object(config)
+def init_api() -> FastAPI:
+    server = FastAPI()
+    server.state.limiter = limiter
 
     inference.init()
-    limiter.init_app(server)
 
-    from api.detection.routes import detection
-    from api.errors import errors
-    from api.health import health
+    @server.get("/health", status_code=200)
+    async def health():
+        return {"status": "OK"}
 
-    server.register_blueprint(health)
-    server.register_blueprint(errors)
-    server.register_blueprint(detection)
+    from api.detection import routes
+    from api.errors import handle_errors
+
+    server.include_router(routes.router)
+
+    handle_errors(server)
 
     return server
