@@ -21,7 +21,10 @@ Open Vision API is an open source computer vision API that uses oepn source deep
 
 The following instructions detail how to set up the ova-server.
 
-For information regarding the python client and a quick demo of the API functionality head to [ova-client](https://github.com/openvisionapi/ova-client).
+For information regarding the official clients and a quick demo of the API functionality head to:
+
+- [ova-client](https://github.com/openvisionapi/ova-client): the official Python client.
+- [ova](https://github.com/openvisionapi/ova): the official Rust client.
 
 ### Installation
 
@@ -65,8 +68,7 @@ Get the official client.
 $ git clone https://github.com/openvisionapi/ova-client
 $ cd ova-client
 $ just setup
-$ source .venv/bin/activate
-$ DETECTION_URL=http://localhost:8000/api/v1/detection poetry run ./ova.py detection images/cat.jpeg
+$ OVA_DETECTION_URL=http://localhost:8000/api/v1/detection poetry run ./ova.py detection images/cat.jpeg
 ```
 
 > For more information about the python client, please visit https://github.com/openvisionapi/ova-client
@@ -127,8 +129,7 @@ $ just test
 
 ## 📄 Documentation
 
-The complete documentation can be found by visiting
-https://openvisionapi-documentation.readthedocs.io/en/latest/
+The complete documentation can be found here [documentation](https://openvisionapi-documentation.readthedocs.io/en/latest/)
 
 <br>
 
